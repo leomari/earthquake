@@ -1,7 +1,57 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZW5kcmVocCIsImEiOiJjamRsNmlvZjYwM3RqMnhwOGRneDhhc2ZkIn0.wVZHznNCtC5_gJAnLC2EJQ';
 
-var v = []
-var i = 0;
+
+var select;
+//var select2;
+window.onload = function () {
+    select = document.getElementById('dropdown');
+    for(var i = 0; i< availableEarthquakes.length ; i++) {
+        var option = document.createElement('option');
+        option.text = option.value = availableEarthquakes[i];
+        select.add(option, 0);
+    }
+    
+    select2 = document.getElementById('dropdown2');
+    for(var i = 0; i < modes.length ; i++) {
+        var option = document.createElement('option');
+        option.text = option.value = modes[i];
+        select2.add(option, 0);
+    }
+}
+
+
+function changeHiddenInput(objDropDown) {
+    //console.log(objDropDown);
+    var objHidden = document.getElementById("hiddenInput");
+    objHidden.value = objDropDown.value;
+    var a = objHidden.value;
+    //result.innerHTML = a || "";
+    earthquakeDate = a;
+    //url = mode + '_' + earthquakeDate;
+    //add_data()
+}
+
+
+function changeHiddenInput2(objDropDown) {
+    //console.log(objDropDown);
+    var objHidden = document.getElementById("hiddenInput2");
+    objHidden.value = objDropDown.value;
+    var a = objHidden.value;
+    mode= a;
+}
+
+var availableEarthquakes = ['02-17-2018', '02-16-2018', '02-19-2018', '09-07-2017', '09-19-2017'];
+var modes = ['public', 'private']
+
+var earthquakeDate = '02-16-2018';
+var mode = 'public';
+var l = 0;
+var v;
+var i;
+var Time;
+var url = mode + '_' + earthquakeDate;
+
+
 var map = new mapboxgl.Map({
   container: 'map', // container element id
   style: 'mapbox://styles/mapbox/light-v9',
@@ -9,26 +59,87 @@ var map = new mapboxgl.Map({
   zoom: 5.5
 });
 
+
+
 map.on('load', function() {
+    
+    
+    document.querySelector('.new-data').addEventListener('click', function () {
+    
+    if (l > 0) {
+    map.removeLayer('earthquake' + l);
+    map.removeLayer('act' + l)
+    
+    }
+        
+    l += 1
+    url = mode + '_' + earthquakeDate;
+    document.getElementById('date').textContent = earthquakeDate; 
+    add_data()
+    
+    })
+    
+    
+document.getElementById('slider').addEventListener('input', function(e) {
+  Time = parseInt(e.target.value);
+    i = Time;
+  // update the map
+  updateLayer(Time)  
+});
+
+
+document.querySelector('.btn-pause').addEventListener('click', function() 
+    {for (var j = 0; j < v.length; j++){
+          clearTimeout(v[j])}});
+
+document.querySelector('.btn-reset').addEventListener('click', function() { reset() });
+
+    
+document.querySelector('.btn-new').addEventListener('click',function() {
+
+
+v = [];
+
+for (var j=0; j < 700; j++) {
+    
+    v.push(setTimeout( function () {
+        
+        document.getElementById('slider').value=i;
+        Time = i;
+        
+        i++;
+        updateLayer(Time) }, j*100));
+    }
+
+});
+});
+
+function add_data() {
+    
+
+ v = [];
+ i = 0;
+ Time = 0;
     map.addLayer({
-      id: 'collisions',
+      id: 'earthquake' + l,
       type: 'circle',
       source: {
         type: 'geojson',
-        data: './map_all4.geojson' // replace this with the url of your own geojson
+        data: './' + url + '.geojson' // replace this with the url of your own geojson
       },
       paint: {
         'circle-radius':
-          
-          
+             
           [
             'interpolate',
           ['linear'],
           ['number', ['get', 'S_Gal']],
-        0, 4,
-        5, 24
+        0, 6,
+        5, 16,
+        10, 20,
+        50, 25,
+        100, 30
         ],
-        
         
         'circle-color': [
           'interpolate',
@@ -51,12 +162,39 @@ map.on('load', function() {
       }
     }, 'admin-2-boundaries-dispute');
     
-map.addLayer({
-      id: 'act',
+
+if (mode == 'private') {
+    private_version();
+}
+reset();
+};
+
+
+function updateLayer(Time) {
+    map.setFilter('earthquake'+ l, ['==', ['number', ['get', 'Time']], Time]);
+    if (mode == 'private'){
+    map.setFilter('act' + l, ['==', ['number', ['get', 'Time']], Time]);
+    }
+        
+    document.getElementById('active-hour').innerText = Time;
+    
+}
+
+function reset() { 
+    i = 0;
+    document.getElementById('slider').value=i;
+    Time = i;
+    updateLayer(Time);
+}
+
+
+function private_version() {
+    map.addLayer({
+      id: 'act' + l,
       type: 'circle',
       source: {
         type: 'geojson',
-        data: './map_all4.geojson' // replace this with the url of your own geojson
+        data: './' + url + '.geojson' // replace this with the url of your own geojson
       },
       paint: {
         'circle-radius': 6,
@@ -74,41 +212,11 @@ map.addLayer({
         'circle-opacity': 0.8
       }
     }, 'admin-2-boundaries-dispute');
-    
-document.getElementById('slider').addEventListener('input', function(e) {
-  var Time = parseInt(e.target.value);
-  // update the map
-  updateLayer(Time)  
-});
-
-document.querySelector('.btn-pause').addEventListener('click', function() 
-    {for (var j = 0; j < v.length; j++){
-          clearTimeout(v[j])}});
-    
-document.querySelector('.btn-reset').addEventListener('click', function() 
-    {i = 0;
-    document.getElementById('slider').value=i;
-    var Time = i;
-    updateLayer(Time);
-    });
 
 
-document.querySelector('.btn-new').addEventListener('click',function() {
 
-v = [] 
-for (var j=0; j < 700; j++) { 
-    v.push(setTimeout( function () {
-        
-        document.getElementById('slider').value=i;
-        var Time = i;
-        
-        i++;
-        updateLayer(Time) }, j*100));
     
-}
-});
-    
-map.on('click', 'collisions', function (e) {
+    map.on('click', 'earthquake' + l, function (e) {
         var coordinates = e.features[0].geometry.coordinates.slice();
         var description = e.features[0].properties.Description;
 
@@ -134,15 +242,6 @@ map.on('click', 'collisions', function (e) {
     map.on('mouseleave', 'places', function () {
         map.getCanvas().style.cursor = '';
     });
-    
-  
-});
-
-function updateLayer(Time) {
-    map.setFilter('collisions', ['==', ['number', ['get', 'Time']], Time]);
-    map.setFilter('act', ['==', ['number', ['get', 'Time']], Time]);
-    
-    document.getElementById('active-hour').innerText = Time;
     
 }
 
