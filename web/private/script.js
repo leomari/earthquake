@@ -41,10 +41,10 @@ function changeHiddenInput2(objDropDown) {
 }
 
 var availableEarthquakes = ['02-17-2018', '02-16-2018', '02-19-2018', '09-07-2017', '09-19-2017'];
-var modes = ['public', 'private']
+var modes = [ 'private', 'public']
 
 var earthquakeDate = '02-16-2018';
-var mode = 'public';
+var mode = 'private';
 var l = 0;
 var v;
 var i;
