@@ -36,6 +36,7 @@ a {
 }
 .session {
   margin-bottom: 20px;
+	margin-top: 20px;
 }
 
 .row {
@@ -68,6 +69,7 @@ button {
     cursor: pointer;
     font-weight: 300;
     transition: background-color 0.3s, color 0.3s;
+	margin-top: 5px;
 }
 
 button:hover { font-weight: 600; }
@@ -88,9 +90,43 @@ i {
     transition: margin 0.3s;
 }
 
-.btn-new { top: 150px; left: 60;}
-.btn-pause { top: 150px; left: 120px;}
+.btn-new { 
+	top: 150px; 
+	left: 60;
+	border-style: solid;
+	width: 20px;
+	height: 18px;
+	border-width: 10px 0px 10px 20px;
+	border-color: transparent transparent transparent #555;
+}
+
+.btn-new:hover{
+	border-color: transparent transparent transparent #202020; 
+}
+.btn-pause { 
+	top: 150px; 
+	left: 130px;
+	width: 20px;
+	height: 20px;
+	border-style: double; 
+	border-width: 0px 0px 0px 15px;
+	border-color: #555;
+
+}
+
+.btn-pause:hover {
+	border-color: #202020;
+}
 .btn-reset { top: 150px; left: 200px;}
+
+
+.material-icons:hover:{
+	color:#202020;
+}
+
+#sliderbar{
+	padding-bottom: 10px;
+}
 
 
 .mapboxgl-popup {
