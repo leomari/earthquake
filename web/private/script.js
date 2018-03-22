@@ -41,15 +41,16 @@ function changeHiddenInput2(objDropDown) {
 }
 
 var availableEarthquakes = ['02-17-2018', '02-16-2018', '02-19-2018', '09-07-2017', '09-19-2017'];
-var modes = [ 'private', 'public']
+var modes = ['public', 'private']
 
 var earthquakeDate = '02-16-2018';
-var mode = 'private';
+var mode = 'public';
 var l = 0;
-var v;
+var v =[];
 var i;
 var Time;
 var url = mode + '_' + earthquakeDate;
+var play = false;
 
 
 var map = new mapboxgl.Map({
@@ -77,7 +78,7 @@ map.on('load', function() {
     document.getElementById('date').textContent = earthquakeDate; 
     add_data()
     
-    })
+    });
     
     
 document.getElementById('slider').addEventListener('input', function(e) {
@@ -88,30 +89,18 @@ document.getElementById('slider').addEventListener('input', function(e) {
 });
 
 
-document.querySelector('.btn-pause').addEventListener('click', function() 
-    {for (var j = 0; j < v.length; j++){
-          clearTimeout(v[j])}});
+document.querySelector('.btn-pause').addEventListener('click', function() { 
+    if (l > 0) {
+        pause();}});
 
-document.querySelector('.btn-reset').addEventListener('click', function() { reset() });
+document.querySelector('.btn-reset').addEventListener('click', function() {
+    if (l > 0) {
+    reset();}});
 
-    
-document.querySelector('.btn-new').addEventListener('click',function() {
+document.querySelector('.btn-new').addEventListener('click', function() {
+    if (l > 0){
+    play_b();}});
 
-
-v = [];
-
-for (var j=0; j < 700; j++) {
-    
-    v.push(setTimeout( function () {
-        
-        document.getElementById('slider').value=i;
-        Time = i;
-        
-        i++;
-        updateLayer(Time) }, j*100));
-    }
-
-});
 });
 
 function add_data() {
@@ -178,14 +167,46 @@ function updateLayer(Time) {
         
     document.getElementById('active-hour').innerText = Time;
     
+};
+
+function play_b() {
+
+if (play == false) {
+v = [];
+//document.querySelector('.btn-new').classList.remove();
+    //document.querySelector('.player-1-panel').classList.remove('active');
+
+for (var j=0; j < 700; j++) {
+    
+    v.push(setTimeout( function () {
+        
+        document.getElementById('slider').value=i;
+        Time = i;
+        
+        i++;
+        updateLayer(Time) }, j*100));
+    }
+    play = true;
 }
+    
+};
 
 function reset() { 
+    if (v.length > 0){
+        pause();
+    }
+    
     i = 0;
     document.getElementById('slider').value=i;
     Time = i;
     updateLayer(Time);
-}
+};
+
+function pause() { 
+    for (var j = 0; j < v.length; j++){
+          clearTimeout(v[j])}
+    play = false;
+    };
 
 
 function private_version() {
@@ -243,5 +264,5 @@ function private_version() {
         map.getCanvas().style.cursor = '';
     });
     
-}
+};
 
