@@ -51,13 +51,16 @@ var i;
 var Time;
 var url = mode + '_' + earthquakeDate;
 var play = false;
-
+var b;
+var endTime = 700;
+var speed = 10;
 
 var map = new mapboxgl.Map({
   container: 'map', // container element id
   style: 'mapbox://styles/mapbox/light-v9',
   center: [-98.2022, 16.6855], // initial map center in [lon, lat]
-  zoom: 5.5
+  zoom: 5.5,
+  maxZoom: 8
 });
 
 
@@ -76,6 +79,9 @@ map.on('load', function() {
     l += 1
     url = mode + '_' + earthquakeDate;
     document.getElementById('date').textContent = earthquakeDate; 
+    //setEndTime();
+    speed = document.getElementById('speed').value;
+    
     add_data()
     
     });
@@ -104,11 +110,8 @@ document.querySelector('.btn-new').addEventListener('click', function() {
 });
 
 function add_data() {
-    
-
- v = [];
- i = 0;
- Time = 0;
+//setEndTime();
+ 
     map.addLayer({
       id: 'earthquake' + l,
       type: 'circle',
@@ -155,6 +158,7 @@ function add_data() {
 if (mode == 'private') {
     private_version();
 }
+setMaxZoom();
 reset();
 };
 
@@ -176,7 +180,7 @@ v = [];
 //document.querySelector('.btn-new').classList.remove();
     //document.querySelector('.player-1-panel').classList.remove('active');
 
-for (var j=0; j < 700; j++) {
+for (var j=0; j < endTime; j++) {
     
     v.push(setTimeout( function () {
         
@@ -184,7 +188,7 @@ for (var j=0; j < 700; j++) {
         Time = i;
         
         i++;
-        updateLayer(Time) }, j*100));
+        updateLayer(Time) }, j*1000/speed));
     }
     play = true;
 }
@@ -192,9 +196,9 @@ for (var j=0; j < 700; j++) {
 };
 
 function reset() { 
-    if (v.length > 0){
-        pause();
-    }
+    
+    pause();
+    
     
     i = 0;
     document.getElementById('slider').value=i;
@@ -203,12 +207,32 @@ function reset() {
 };
 
 function pause() { 
+    if (v.length > 0){
     for (var j = 0; j < v.length; j++){
           clearTimeout(v[j])}
+    };
     play = false;
+        
     };
 
+function setEndTime() {
+    $.getJSON(url + '.geojson', function (data) {
+        b = data.features.length;
+        endTime = data.features[b-1].properties['Time'];
+    })
+    for (var h = 0; h < 10;h++){
+        document.getElementById('slider').max = endTime;
+    };
+    }
 
+function setMaxZoom(){
+    if (mode=='public'){
+        map.setMaxZoom(9)
+    }
+    else 
+        map.setMaxZoom(22)
+    
+}
 function private_version() {
     map.addLayer({
       id: 'act' + l,
