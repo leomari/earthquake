@@ -27,19 +27,102 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 }
 
 #Map {
+  position:fixed;
   top:0;
+  width:100%;
+  left: 200px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+    position: fixed;
+    bottom: 0;
+    background-color: #fefefe;
+    width: 100%;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: orange;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: orange;
+    color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+    from {bottom: -300px; opacity: 0} 
+    to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
 }
 </style>
 <body>
 
 <!-- Sidebar -->
+<!--
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
     <i class="fa fa-remove"></i>
   <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2000</a>
   <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2001</a>
   <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2002</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
+  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2018</a>
   <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
   <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
   <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
@@ -61,6 +144,35 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2009</a>
   <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2010</a>
 </nav>
+-->
+<table class="w3-table w3-striped" style = "width:200px">
+<tr>
+  <th>Date</th>
+</tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+<tr><td class="date w3-button w3-hover-black">01/01/2000</td></tr>
+</table>
+
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -68,14 +180,14 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
 <div class="w3-main" style="margin-left:250px">
 
-  <div id = "Map" class="w3-row w3-padding-64">
+  <div id = "Map" class="w3-row">
     <div class="w3-twothird w3-container">
       <h1 class="w3-text-grey">Map</h1>
         <div class="w3-light-grey">
            <div id="myBar" class="w3-container w3-orange" style="height:24px;width:1%">
            </div>
           </div>
-
+<p id = "time">Time: <span id="demo">0</span></p>
 <button class="w3-button w3-light-grey" onclick="move()">Play</button>
 </div>
 </div>
@@ -89,25 +201,69 @@ function move() {
         if (width >= 100) {
             clearInterval(id);
         } else {
-            width++; 
+            width++;
+            var num = width * 1/2; 
+            num = num.toFixed(0)
+            document.getElementById("demo").innerHTML = num;
             elem.style.width = width + '%'; 
         }
     }
 }
 </script>
-    <div class="w3-display-topright">
-     <button class="w3-button w3-circle w3-grey" onclick="info()">?</button>
+
+<div class="popup w3-display-topright" onclick="info()">
+  <button class="w3-button w3-circle w3-grey popup" id = "myBtn">?
+     </button>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Modal Header</h2>
     </div>
+    <div class="modal-body">
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>
+    </div>
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+
+</div>
+
 
 <script>
-// When the user clicks on div, open the popup
-function info() {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
 </script>
-
-
 
 
 
