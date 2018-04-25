@@ -8,143 +8,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="style.css">
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
-.w3-sidebar {
-  z-index: 3;
-  width: 200px;
-  top: 0px;
-  bottom: 0;
-  height: inherit;
-  text-align: center;
-}
-
-#myFooter {
-    position: fixed;
-    bottom: 0;
-    left: 200px;
-    width: 100%; 
-}
-
-#Map {
-  position:fixed;
-  top:0;
-  width:100%;
-  left: 200px;
-}
-
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    -webkit-animation-name: fadeIn; /* Fade in the background */
-    -webkit-animation-duration: 0.4s;
-    animation-name: fadeIn;
-    animation-duration: 0.4s
-}
-
-/* Modal Content */
-.modal-content {
-    position: fixed;
-    bottom: 0;
-    background-color: #fefefe;
-    width: 100%;
-    -webkit-animation-name: slideIn;
-    -webkit-animation-duration: 0.4s;
-    animation-name: slideIn;
-    animation-duration: 0.4s
-}
-
-/* The Close Button */
-.close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-header {
-    padding: 2px 16px;
-    background-color: orange;
-    color: white;
-}
-
-.modal-body {padding: 2px 16px;}
-
-.modal-footer {
-    padding: 2px 16px;
-    background-color: orange;
-    color: white;
-}
-
-/* Add Animation */
-@-webkit-keyframes slideIn {
-    from {bottom: -300px; opacity: 0} 
-    to {bottom: 0; opacity: 1}
-}
-
-@keyframes slideIn {
-    from {bottom: -300px; opacity: 0}
-    to {bottom: 0; opacity: 1}
-}
-
-@-webkit-keyframes fadeIn {
-    from {opacity: 0} 
-    to {opacity: 1}
-}
-
-@keyframes fadeIn {
-    from {opacity: 0} 
-    to {opacity: 1}
-}
-</style>
 <body>
 
-<!-- Sidebar -->
-<!--
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
-    <i class="fa fa-remove"></i>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2000</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2001</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2002</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2018</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2003</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2004</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2005</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">0101/2006</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">0101/2007</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2008</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2009</a>
-  <a class="date w3-bar-item w3-button w3-hover-black" href="#">01/01/2010</a>
-</nav>
--->
 <table class="w3-table w3-striped" style = "width:200px">
 <tr>
   <th>Date</th>
@@ -180,36 +45,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
 <div class="w3-main" style="margin-left:250px">
 
-  <div id = "Map" class="w3-row">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text-grey">Map</h1>
-        <div class="w3-light-grey">
-           <div id="myBar" class="w3-container w3-orange" style="height:24px;width:1%">
-           </div>
-          </div>
-<p id = "time">Time: <span id="demo">0</span></p>
-<button class="w3-button w3-light-grey" onclick="move()">Play</button>
-</div>
-</div>
-
-<script>
-function move() {
-    var elem = document.getElementById("myBar"); 
-    var width = 1;
-    var id = setInterval(frame, 10);
-    function frame() {
-        if (width >= 100) {
-            clearInterval(id);
-        } else {
-            width++;
-            var num = width * 1/2; 
-            num = num.toFixed(0)
-            document.getElementById("demo").innerHTML = num;
-            elem.style.width = width + '%'; 
-        }
-    }
-}
-</script>
 
 <div class="popup w3-display-topright" onclick="info()">
   <button class="w3-button w3-circle w3-grey popup" id = "myBtn">?
@@ -269,9 +104,147 @@ window.onclick = function(event) {
 
   <footer id="myFooter">
     <div class="w3-container w3-theme-l1 w3-padding-32">
-      <h4>Footer</h4>
+<p id = "time">Time: <span id="demo">0</span></p>
+      <div id = "slidebar" class="slidecontainer">
+  <input type="range" min="0" max="700" value="0" class="slider" id="myRange">
+</div>
+<button id = "play" class="w3-button w3-light-grey" onclick="move()">1x</button>
+<button class="w3-button w3-light-grey speed" onclick="move2()">2x</button>
+<button class="w3-button w3-light-grey speed" onclick="move4()">4x</button>
+<button class="w3-button w3-light-grey speed" onclick="move8()">8x</button>
+<button id = "pause" class="w3-button w3-light-grey speed" onclick="pause()">Pause</button>
+<button id = "resume" class="w3-button w3-light-grey speed" onclick="resume()">Resume</button>
+<button id = "stop" class="w3-button w3-light-grey speed" onclick="stop()">Stop</button>
     </div>
   </footer>
+
+
+
+<script>
+var cancel = false;
+var id1;
+var id2;
+var id4;
+var id8;
+function pause() {
+  cancel = true;
+}
+
+function resume() {
+  cancel = false;
+}
+
+function stop() {
+  document.getElementById("myRange").value = 0;
+  document.getElementById("demo").innerHTML = 0;
+  clearInterval(id1);
+  clearInterval(id2);
+  clearInterval(id4);
+  clearInterval(id8);
+}
+
+function move() {
+    clearInterval(id1);
+    clearInterval(id2);
+    clearInterval(id4);
+    clearInterval(id8);
+    var elem = document.getElementById("myRange").value; 
+    var width = 0;
+    id1 = setInterval(frame, 128);
+    function frame() {
+        if (width >= 700) {
+            clearInterval(id1);
+        }
+        if (cancel) {
+          return
+        } else {
+            width++;
+            var num = width; 
+            num = num.toFixed(0)
+            document.getElementById("demo").innerHTML = num
+            document.getElementById("myRange").value = num;
+        }
+    }
+}
+
+function move2() {
+    clearInterval(id1);
+    clearInterval(id2);
+    clearInterval(id4);
+    clearInterval(id8);
+    var elem = document.getElementById("myRange").value; 
+    var width = 0;
+    id2 = setInterval(frame, 64);
+    function frame() {
+        if (width >= 700) {
+            clearInterval(id2);
+        } if (cancel) {
+          return
+        } else {
+            width++;
+            var num = width; 
+            num = num.toFixed(0)
+            document.getElementById("demo").innerHTML = num
+            document.getElementById("myRange").value = num;
+        }
+    }
+}
+
+function move4() {
+    clearInterval(id1);
+    clearInterval(id2);
+    clearInterval(id4);
+    clearInterval(id8);
+    var elem = document.getElementById("myRange").value; 
+    var width = 0;
+    id4 = setInterval(frame, 32);
+    function frame() {
+        if (width >= 700) {
+            clearInterval(id4);
+        } if (cancel) {
+          return
+        } else {
+            width++;
+            var num = width; 
+            num = num.toFixed(0)
+            document.getElementById("demo").innerHTML = num
+            document.getElementById("myRange").value = num;
+        }
+    }
+}
+
+function move8() {
+    clearInterval(id1);
+    clearInterval(id2);
+    clearInterval(id4);
+    clearInterval(id8);
+    var elem = document.getElementById("myRange").value; 
+    var width = 0;
+    id8 = setInterval(frame, 16);
+    function frame() {
+        if (width >= 700) {
+            clearInterval(id8);
+        } if (cancel) {
+          return
+        } else {
+            width++;
+            var num = width; 
+            num = num.toFixed(0)
+            document.getElementById("demo").innerHTML = num
+            document.getElementById("myRange").value = num;
+        }
+    }
+}
+</script>
+  <script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+    output.innerHTML = this.value;}
+</script>
  
 
 
