@@ -1,0 +1,54 @@
+
+
+
+<title>SkyAlert</title>
+<h1>Upload Data</h1>
+<a target="_blank" href="http://www2.ssn.unam.mx:8080/catalogo">SSN earthquake catalog</a>
+<!--{% load static %} -->
+<link href="{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}" rel='stylesheet' >
+<link type= "text/css" rel = "stylesheet"
+			  href = "{% static 'data/style.css'%}" >
+<script src="{% static 'data/script_data.js' %}"></script>  
+<form method='POST' action="{% url 'data' %}" enctype="multipart/form-data">
+<!--{% csrf_token %} -->
+
+<br />
+Date (MM-DD-YYYY):
+<br />
+<input type='text' name='title' />
+    
+<br />
+Magnitude:
+<br />
+<input type='text' name='magnitude' />
+
+<br />
+<br />
+Epsienter information:
+<br />
+Longitude
+<br />
+<input type='text' name='epi_lon' />
+
+<br />
+Latitude
+<br />
+<input type='text' name='epi_lat' />
+
+
+    
+<br />
+Excel data:
+<br />
+<input type='file' name='excel_data' />
+    
+<input type="text" id="delete_title" name="delete_title" hidden />
+
+
+    
+<input id='submit-btn' class='btn btn-primary' type='submit' value='Upload' /> 
+</form>
+
+<a href="{% url 'admin_home' %}">Return to home</a>
+
+
