@@ -123,14 +123,16 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2>Modal Header</h2>
+      <h2>Scale of Intensity</h2>
     </div>
+    <img id = "logo" src = "logo.png"></img>
     <div class="modal-body">
-      <p>Some text in the Modal Body</p>
-      <p>Some other text...</p>
-    </div>
-    <div class="modal-footer">
-      <h3>Modal Footer</h3>
+      <div id = "weak" class = "color">Weak</div>
+      <div id = "mild" class = "color">Mild</div>
+      <div id = "moderate" class = "color">Moderate</div>
+      <div id = "strong" class = "color">Strong</div>
+      <div id = "violent" class = "color">Violent</div>
+      <div id = "severe" class = "color">Severe</div>
     </div>
   </div>
 
@@ -202,6 +204,7 @@ function resume() {
 function stop() {
   document.getElementById("myRange").value = 0;
   document.getElementById("demo").innerHTML = 0;
+  cancel = false;
   clearInterval(id1);
   clearInterval(id2);
   clearInterval(id4);
